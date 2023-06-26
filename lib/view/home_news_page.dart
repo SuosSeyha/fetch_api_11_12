@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fetch_api_11_12/controller/news_controller.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 class HomeNewsPage extends StatelessWidget {
    HomeNewsPage({super.key});
   NewsController controller = Get.put(NewsController());
@@ -13,7 +14,7 @@ class HomeNewsPage extends StatelessWidget {
           'News Data io'
         ),
       ),
-      body: GetBuilder(
+      body: GetBuilder<NewsController>(
         init: NewsController(),
         builder: (controller) {
           // ignore: unnecessary_null_comparison
@@ -24,7 +25,7 @@ class HomeNewsPage extends StatelessWidget {
           }
 
           return ListView.builder(
-            itemCount: controller.newSResModel!.results!.length,
+            itemCount:  controller.newSResModel!.results!.length,
             itemBuilder: (context, index) {
               var data = controller.newSResModel!.results![index];
               return Column(
@@ -49,7 +50,40 @@ class HomeNewsPage extends StatelessWidget {
                       width: double.infinity,
                       fit: BoxFit.cover,
                       ),
-                  )
+                  ),
+                Row(
+                  children: [
+                    Text(
+                    data.pubDate.toString(),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(width: 10,),
+                  Text(
+                  data.language.toString(),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.blue
+                  ),
+                   ), 
+                  ],
+                ),
+                  
+                  Text(
+                    data.title.toString(),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text(
+                    data.description.toString(),
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ), 
                 ],
               );
             },
