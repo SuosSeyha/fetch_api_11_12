@@ -9,6 +9,7 @@ class NewsService{
     if(respone.statusCode ==200){
       debugPrint(' Successful...');
     }
-    return json.decode(respone.body);
+    var map = jsonDecode(respone.body);
+    return NewSResModel.fromJson(map);
   }
 }

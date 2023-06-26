@@ -63,16 +63,16 @@ class Results {
   Results.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     link = json['link'];
-    keywords = json['keywords'].cast<String>();
-    creator = json['creator'].cast<String>();
+    // keywords = json['keywords'].cast<String>();
+    // creator = json['creator'].cast<String>();
     videoUrl = json['video_url'];
     description = json['description'];
     content = json['content'];
     pubDate = json['pubDate'];
     imageUrl = json['image_url'];
     sourceId = json['source_id'];
-    category = json['category'].cast<String>();
-    country = json['country'].cast<String>();
+    // category = json['category'].cast<String>();
+    // country = json['country'].cast<String>();
     language = json['language'];
   }
 
